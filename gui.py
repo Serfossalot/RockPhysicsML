@@ -36,6 +36,7 @@ DEFAULT_DATA = DATA_DIR / 'synthetic_wells_combined.csv'
 class RockPhysicsApp(tk.Tk):
     def __init__(self):
         super().__init__()
+        self.withdraw()  # Keep main window hidden until the splash screen finishes.
         default_data = DEFAULT_DATA
         self.title(f'Rock Physics ML v{APP_VERSION} — Rock Physics Modeling')
         icon_file = BUNDLE_DIR / 'oil-pumpjack-svgrepo-com.ico'
@@ -68,7 +69,6 @@ class RockPhysicsApp(tk.Tk):
 
     def _show_splash(self):
         """Show branding briefly without blocking the Tk event loop."""
-        self.withdraw()
         splash = tk.Toplevel(self)
         splash.overrideredirect(True)
         splash.configure(bg='#1264AD')
